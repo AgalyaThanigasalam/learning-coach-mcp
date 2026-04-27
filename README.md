@@ -333,4 +333,4 @@ This is **not** a static quiz app or a basic chatbot. It is a full agentic AI sy
 
 ---
 
-> Built with ❤️ by [Agalya Thanigasalam](https://github.com/AgalyaThanigasalam)
+> by [Agalya Thanigasalam](https://github.com/AgalyaThanigasalam)
