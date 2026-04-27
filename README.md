@@ -1,4 +1,4 @@
-**# 🎓 MCP-Based AI Learning Coach**
+# 🎓 MCP-Based AI Learning Coach
 
 > An intelligent, adaptive learning platform powered by **MCP (Model Context Protocol)**, **RAG**, and **Agentic AI** — built to personalize education for every learner.
 
@@ -20,6 +20,7 @@
 - [Dataset](#dataset)
 - [Features](#features)
 - [Real-World Example](#real-world-example)
+- [Why This Project is Advanced](#why-this-project-is-advanced)
 
 ---
 
@@ -33,50 +34,57 @@ Traditional learning systems give every student the same content, fixed difficul
 
 The result is a system that **understands** each learner, **adapts** content in real time, and **explains** concepts clearly — all fully AI-powered.
 
+---
 
 ## Architecture
 
+```
+User
+ |
+ v
+[Frontend — React + Tailwind CSS]
+  Dashboard | Learning Page | Chatbot | Leaderboard
+ |
+ | HTTP / REST
+ v
+[Backend — FastAPI]
+  API Routing | Auth | LLM Communication
+ |
+ v
+[MCP Orchestrator]
+  Context Manager | Tool Selector | Decision Flow
+ |
+ +------------------+------------------+------------------+
+ |                  |                  |                  |
+ v                  v                  v                  v
+[Knowledge      [Learner         [Adaptive         [Question
+ Graph Tool]     Profiling Tool]  Difficulty Tool]  Generator Tool]
 
-┌──────────────────────────────────────────────────────────┐
-│             Frontend  (React + Tailwind CSS)             │
-│   Dashboard  ·  Learning Page  ·  Chatbot  ·  Leaderboard│
-└─────────────────────────┬────────────────────────────────┘
-                          │  HTTP / REST
-┌─────────────────────────▼────────────────────────────────┐
-│                   Backend  (FastAPI)                      │
-│        API Routing  ·  Auth  ·  LLM Communication        │
-└─────────────────────────┬────────────────────────────────┘
-                          │
-┌─────────────────────────▼────────────────────────────────┐
-│               MCP Orchestrator  🧠                        │
-│    Context Manager · Tool Selector · Decision Flow       │
-└──┬──────┬──────┬──────┬──────┬──────┬────────────────────┘
-   │      │      │      │      │      │
-   ▼      ▼      ▼      ▼      ▼      ▼
-┌──────┐┌──────┐┌──────┐┌──────┐┌──────┐┌──────┐┌──────┐
-│Know- ││Learnr││Adapt.││Quest.││Expln.││Vect. ││Prog. │
-│ledge ││Profil││Diff. ││Genr. ││Genr. ││Mem.  ││Anltc.│
-│Graph ││Tool  ││Tool  ││Tool  ││Tool  ││(RAG) ││Tool  │
-└──────┘└──────┘└──────┘└──────┘└──────┘└──────┘└──────┘
-              │                              │
-   ┌──────────▼──────────┐    ┌──────────────▼─────────┐
-   │     LLM Engine      │    │      Vector Store       │
-   │ (OpenAI / Gemini /  │    │   (FAISS / Chroma)      │
-   │  Anthropic etc.)    │    │                         │
-   └─────────────────────┘    └────────────────────────┘
-              │
-   ┌──────────▼──────────────────────────────────────────┐
-   │              Dataset  (questions.csv)                │
-   │     ML · Deep Learning · NLP · GenAI · Engineering  │
-   └─────────────────────────────────────────────────────┘
+ +------------------+------------------+------------------+
+ |                  |                  |
+ v                  v                  v
+[Explanation    [Vector Memory    [Progress
+ Generator]      Tool — RAG]       Analytics Tool]
+ |                  |
+ v                  v
+[LLM Engine]    [Vector Store]
+ OpenAI /        FAISS / Chroma
+ Anthropic /
+ Gemini
+ |
+ v
+[Dataset — questions.csv]
+ ML | Deep Learning | NLP | GenAI | Engineering
 ```
 
-
+---
 
 ## MCP Tools
 
 The system uses **7 specialized MCP tools**, each responsible for a distinct part of the learning pipeline:
 
+| # | Tool | Role |
+|---|------|------|
 | 1 | **Knowledge Graph Tool** | Stores topic relationships for structured learning paths (e.g. ML → Supervised → Regression) |
 | 2 | **Learner Profiling Tool** | Tracks per-user accuracy, weak topics, and progress for full personalization |
 | 3 | **Adaptive Difficulty Tool** | Raises or lowers question difficulty dynamically based on performance |
@@ -85,9 +93,12 @@ The system uses **7 specialized MCP tools**, each responsible for a distinct par
 | 6 | **Vector Memory Tool (RAG)** | Stores embeddings and retrieves relevant context for accurate, context-aware answers |
 | 7 | **Progress Analytics Tool** | Tracks mastery, engagement, and performance; powers the analytics dashboard |
 
-
+---
 
 ## Tech Stack
+
+| Layer | Technology |
+|-------|------------|
 | Frontend | React, Tailwind CSS |
 | Backend | FastAPI (Python) |
 | AI Orchestration | MCP (Model Context Protocol) |
@@ -101,39 +112,43 @@ The system uses **7 specialized MCP tools**, each responsible for a distinct par
 
 ```
 learning-coach-mcp/
-│
-├── learning-coach/                  # Main application
-│   ├── backend/                     # FastAPI server
-│   │   ├── main.py                  # App entry point
-│   │   ├── mcp/
-│   │   │   ├── orchestrator.py      # MCP tool selector & context manager
-│   │   │   └── tools/
-│   │   │       ├── knowledge_graph.py
-│   │   │       ├── learner_profiling.py
-│   │   │       ├── adaptive_difficulty.py
-│   │   │       ├── question_generator.py
-│   │   │       ├── explanation_generator.py
-│   │   │       ├── vector_memory.py
-│   │   │       └── progress_analytics.py
-│   │   ├── rag/
-│   │   │   ├── embeddings.py        # Embedding pipeline
-│   │   │   └── retriever.py         # Vector retrieval
-│   │   ├── llm/
-│   │   │   └── client.py            # LLM API client
-│   │   └── requirements.txt
-│   │
-│   ├── frontend/                    # React + Tailwind UI
-│   │   ├── src/
-│   │   │   ├── pages/               # Dashboard, Learn, Leaderboard, Chat
-│   │   │   └── components/          # Shared UI components
-│   │   └── package.json
-│   │
-│   └── data/
-│       └── questions.csv            # Generated question bank
-│
-├── generate_questions.py            # Script to generate questions.csv
-├── .gitignore
-└── README.md
+|
+|-- learning-coach/                  (Main application)
+|   |
+|   |-- backend/                     (FastAPI server)
+|   |   |-- main.py                  (App entry point)
+|   |   |-- requirements.txt
+|   |   |
+|   |   |-- mcp/
+|   |   |   |-- orchestrator.py      (MCP tool selector and context manager)
+|   |   |   |-- tools/
+|   |   |       |-- knowledge_graph.py
+|   |   |       |-- learner_profiling.py
+|   |   |       |-- adaptive_difficulty.py
+|   |   |       |-- question_generator.py
+|   |   |       |-- explanation_generator.py
+|   |   |       |-- vector_memory.py
+|   |   |       |-- progress_analytics.py
+|   |   |
+|   |   |-- rag/
+|   |   |   |-- embeddings.py        (Embedding pipeline)
+|   |   |   |-- retriever.py         (Vector retrieval)
+|   |   |
+|   |   |-- llm/
+|   |       |-- client.py            (LLM API client)
+|   |
+|   |-- frontend/                    (React + Tailwind UI)
+|   |   |-- src/
+|   |   |   |-- pages/               (Dashboard, Learn, Leaderboard, Chat)
+|   |   |   |-- components/          (Shared UI components)
+|   |   |-- package.json
+|   |
+|   |-- data/
+|       |-- questions.csv            (Generated question bank)
+|
+|-- generate_questions.py            (Script to generate questions.csv)
+|-- .gitignore
+|-- README.md
 ```
 
 ---
@@ -146,7 +161,7 @@ Make sure you have the following installed:
 
 - Python **3.10+**
 - Node.js **18+** and npm
-- An LLM API key (OpenAI / Anthropic / Google Gemini)
+- An LLM API key — OpenAI, Anthropic, or Google Gemini
 
 ---
 
@@ -179,11 +194,10 @@ cd learning-coach/backend
 # Create a virtual environment
 python -m venv venv
 
-# Activate it
-# On macOS / Linux:
+# Activate it — macOS / Linux:
 source venv/bin/activate
 
-# On Windows:
+# Activate it — Windows:
 venv\Scripts\activate
 
 # Install dependencies
@@ -212,8 +226,8 @@ Start the backend server:
 uvicorn main:app --reload --port 8000
 ```
 
-The API will be running at **http://localhost:8000**  
-Interactive API docs available at **http://localhost:8000/docs**
+- API running at: **http://localhost:8000**
+- Interactive docs at: **http://localhost:8000/docs**
 
 ---
 
@@ -231,36 +245,33 @@ npm install
 npm run dev
 ```
 
-The app will be running at **http://localhost:5173**
+App running at: **http://localhost:5173**
 
 ---
 
 ### Step 5 — Open in browser
 
-Navigate to **http://localhost:5173** to see the Learning Coach dashboard.
+Go to **http://localhost:5173** to use the Learning Coach.
 
-> ⚠️ Make sure **both** the backend (port 8000) and frontend (port 5173) are running simultaneously.
+> Make sure **both** the backend (port 8000) and frontend (port 5173) are running at the same time.
 
 ---
 
-### Quick Start (all steps at a glance)
+### Quick Start Summary
 
 ```bash
-# 1. Clone
-git clone https://github.com/AgalyaThanigasalam/learning-coach-mcp.git
-cd learning-coach-mcp
-
-# 2. Generate dataset
+# Terminal 0 — Generate dataset (only once)
 python generate_questions.py
 
-# 3. Backend (Terminal 1)
+# Terminal 1 — Backend
 cd learning-coach/backend
-python -m venv venv && source venv/bin/activate   # Windows: venv\Scripts\activate
+python -m venv venv
+source venv/bin/activate        # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-cp .env.example .env          # add your API key in .env
+cp .env.example .env            # Add your LLM API key inside .env
 uvicorn main:app --reload --port 8000
 
-# 4. Frontend (Terminal 2)
+# Terminal 2 — Frontend
 cd learning-coach/frontend
 npm install
 npm run dev
@@ -280,7 +291,7 @@ The `questions.csv` is auto-generated by `generate_questions.py` and covers **5 
 | Generative AI | Prompt engineering, LLMs, Fine-tuning, RAG |
 | Engineering | Data Structures, Algorithms, System Design |
 
-Each row contains: `domain, difficulty (1–5), question, 4 options, correct answer, explanation`.
+Each row contains: `domain`, `difficulty (1–5)`, `question`, `4 answer options`, `correct answer`, `explanation`.
 
 ---
 
@@ -322,4 +333,4 @@ This is **not** a static quiz app or a basic chatbot. It is a full agentic AI sy
 
 ---
 
-> by [Agalya Thanigasalam](https://github.com/AgalyaThanigasalam)
+> Built with ❤️ by [Agalya Thanigasalam](https://github.com/AgalyaThanigasalam)
