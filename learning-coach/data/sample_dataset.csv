@@ -1,0 +1,11 @@
+topic,difficulty,question,option_a,option_b,option_c,correct_answer,explanation
+Algorithms,2,What is the time complexity of linear search?,O(1),O(log n),O(n²),O(n),Linear search checks each element one by one giving O(n) complexity.
+Algorithms,3,Which algorithm uses divide and conquer?,Bubble Sort,Merge Sort,Insertion Sort,Selection Sort,Merge Sort,Merge Sort divides the array in half recursively then merges sorted halves.
+Algorithms,4,What is the worst-case complexity of quicksort?,O(n log n),O(n),O(n²),O(log n),O(n²),Quicksort degrades to O(n²) when the pivot is always the smallest or largest element.
+Data Structures,2,Which data structure is used for BFS?,Stack,Queue,Heap,Tree,Queue,BFS uses a queue to explore nodes level by level in FIFO order.
+Data Structures,3,What is the height of a balanced binary tree with n nodes?,O(n),O(log n),O(n²),O(1),O(log n),A balanced binary tree has height O(log n) because each level doubles the nodes.
+Mathematics,3,What is the derivative of sin(x)?,sin(x),-cos(x),cos(x),tan(x),cos(x),The derivative of sin(x) is cos(x) by standard differentiation rules.
+Mathematics,4,What is the integral of 1/x?,ln(x) + C,x + C,1/x² + C,e^x + C,ln(x) + C,The integral of 1/x is the natural logarithm ln(x) + C.
+Programming,2,What does OOP stand for?,Object Oriented Programming,Open Object Protocol,Ordered Output Processing,Object Oriented Programming,OOP stands for Object Oriented Programming - a paradigm based on objects and classes.
+Programming,3,What is a closure in JavaScript?,A loop,A function with access to its outer scope,A class method,An async function,A function with access to its outer scope,A closure is a function that retains access to variables from its enclosing scope even after that scope has closed.
+Physics,2,What is the unit of force?,Joule,Watt,Newton,Pascal,Newton,Force is measured in Newtons (N) named after Isaac Newton.
